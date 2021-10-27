@@ -1,4 +1,3 @@
-// TEST/ASSERTION FUNCTIONS
 const eqArrays = function(array1, array2) {
   let output = true;
   if (array1.length !== array2.length) return false;
@@ -21,24 +20,18 @@ const assertArraysEqual = function(array1, array2) {
   }
 };
 
-// ACTUAL FUNCTION
-const middle = function(array) {
-  if (array.length <= 2) {
-    return [];
-  } else if (array.length % 2 === 0) {
-    return [array[Math.ceil(array.length / 2) - 1], array[Math.ceil(array.length / 2)]];
-  } else {
-    return [array[Math.floor(array.length / 2)]];
+const letterPositions = function(sentence) {
+  const results = {};
+  for (let i = 0; i < sentence.length; i++) {
+    if (sentence[i] !== " ") {
+      results[sentence[i]] ? results[sentence[i]].push(i) : results[sentence[i]] = [i];
+    }
   }
+  return results;
 };
 
-// TEST CODE
-// ...
-assertArraysEqual(middle([1]), []); // => []
-assertArraysEqual(middle([1, 2]), []); // => []
+//Test code
+let test = letterPositions("lighthouse in the house");
+console.log(test);
 
-assertArraysEqual(middle([1, 2, 3]), [2]); // => [2]
-assertArraysEqual(middle([1, 2, 3, 4, 5]), [3]);// => [3]
-
-assertArraysEqual(middle([1, 2, 3, 4]), [2, 3]);// => [2, 3]
-assertArraysEqual(middle([1, 2, 3, 4, 5, 6]), [3, 4]);// => [3, 4]
+assertArraysEqual(letterPositions("hello").e, [1]);
